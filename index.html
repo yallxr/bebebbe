@@ -1,1084 +1,1016 @@
 
 
-<!doctype html>
+<!DOCTYPE html>
 
-<html lang="ru" data-theme="light">
+<html lang="ru">
 
 <head>
 
-  <meta charset="utf-8">
+<meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#fff7fb">
+<title>VIKA — MYATA LOUNGE INVITATION</title>
 
-  <title>Приглашение на мой 18-й день рождения</title>
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 
-    :root {
+:root {
 
-      color-scheme: light;
+    --bg: #08070d;
 
-      --bg: #fff8fc;
+    --card: #15111e;
 
-      --surface: rgba(255, 255, 255, 0.78);
+    --text: #fff;
 
-      --surface-solid: #ffffff;
+    --muted: #aaa0b5;
 
-      --text: #43283c;
+    --accent: #c44aff;
 
-      --muted: #896f82;
+    --accent2: #8d37ff;
 
-      --pink: #f3b8d0;
+    --glow: rgba(190,60,255,.3);
 
-      --pink-strong: #d95791;
+}
 
-      --yellow: #fff0ad;
+body.light {
 
-      --border: rgba(153, 92, 126, 0.17);
+    --bg: #fff4f3;
 
-      --shadow: 0 22px 70px rgba(155, 91, 126, 0.13);
+    --card: #fff;
 
-      --top-glow: rgba(255, 213, 232, 0.54);
+    --text: #260a12;
 
-      --bottom-glow: rgba(255, 239, 177, 0.46);
+    --muted: #93636b;
 
-    }
+    --accent: #ff244d;
 
-    html[data-theme="dark"] {
+    --accent2: #ff6478;
 
-      color-scheme: dark;
+    --glow: rgba(255,30,70,.25);
 
-      --bg: #211a27;
+}
 
-      --surface: rgba(48, 36, 54, 0.88);
+* { box-sizing: border-box; scroll-behavior: smooth; }
 
-      --surface-solid: #302436;
+body {
 
-      --text: #fff1f8;
+    margin: 0;
 
-      --muted: #c6afc1;
+    background: var(--bg);
 
-      --pink: #75435f;
+    color: var(--text);
 
-      --pink-strong: #ff9bc6;
+    font-family: 'Manrope', sans-serif;
 
-      --yellow: #645633;
+    transition: .4s;
 
-      --border: rgba(255, 222, 239, 0.14);
+    overflow-x: hidden;
 
-      --shadow: 0 22px 70px rgba(0, 0, 0, 0.25);
+}
 
-      --top-glow: rgba(111, 57, 91, 0.34);
+h1,h2,h3,.heading {
 
-      --bottom-glow: rgba(103, 87, 41, 0.22);
+    font-family: 'Unbounded', sans-serif;
 
-    }
+}
 
-    * { box-sizing: border-box; }
+.gradient {
 
-    html { scroll-behavior: smooth; }
+    background: linear-gradient(110deg,var(--accent),var(--accent2),#ff80b5);
 
-    body {
+    -webkit-background-clip: text;
 
-      margin: 0;
+    color: transparent;
 
-      min-height: 100vh;
+}
 
-      color: var(--text);
+.neon {
 
-      background:
+    text-shadow: 0 0 25px var(--glow);
 
-        radial-gradient(ellipse at 10% 5%, var(--top-glow), transparent 38rem),
+}
 
-        radial-gradient(ellipse at 92% 90%, var(--bottom-glow), transparent 34rem),
+.card {
 
-        var(--bg);
+    background: var(--card);
 
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+    border: 1px solid var(--glow);
 
-        BlinkMacSystemFont, "Segoe UI", sans-serif;
+    border-radius: 24px;
 
-      transition: background-color .25s ease, color .25s ease;
+    transition: .3s;
 
-    }
+}
 
-    button, input, select, textarea { font: inherit; }
+.card:hover {
 
-    button { -webkit-tap-highlight-color: transparent; }
+    transform: translateY(-5px);
 
-    .site-shell { min-height: 100vh; }
+    box-shadow: 0 0 30px var(--glow);
 
-    .glass {
+}
 
-      background: var(--surface);
+.btn {
 
-      border: 1px solid var(--border);
+    display: inline-block;
 
-      box-shadow: var(--shadow);
+    background: linear-gradient(110deg,var(--accent),var(--accent2));
 
-      backdrop-filter: blur(16px);
+    color: white;
 
-    }
+    padding: 17px 30px;
 
-    .muted { color: var(--muted); }
+    border-radius: 50px;
 
-    .accent-text { color: var(--pink-strong); }
+    font-weight: 800;
 
-    .eyebrow { letter-spacing: .2em; }
+    transition: .3s;
 
-    .serif { font-family: Georgia, "Times New Roman", serif; }
+    box-shadow: 0 0 25px var(--glow);
 
-    .page {
+}
 
-      display: none;
+.btn:hover { transform: scale(1.05); }
 
-      animation: arrive .38s ease both;
+.orb {
 
-    }
+    position: absolute;
 
-    .page.active { display: block; }
+    width: 300px;
 
-    @keyframes arrive {
+    height: 300px;
 
-      from { opacity: 0; transform: translateY(9px); }
+    border-radius: 50%;
 
-      to { opacity: 1; transform: translateY(0); }
+    background: var(--accent);
 
-    }
+    filter: blur(120px);
 
-    .primary-button {
+    opacity: .18;
 
-      background: var(--pink-strong);
+    pointer-events: none;
 
-      color: #fff;
+}
 
-      box-shadow: 0 10px 24px rgba(217, 87, 145, .22);
+.small-label {
 
-      transition: transform .2s ease, box-shadow .2s ease;
+    font-size: 10px;
 
-    }
+    letter-spacing: 5px;
 
-    .primary-button:hover {
+    color: var(--accent);
 
-      transform: translateY(-2px);
+    font-weight: 800;
 
-      box-shadow: 0 14px 28px rgba(217, 87, 145, .28);
+}
 
-    }
+@keyframes float {
 
-    .soft-button {
+    0%,100% { transform: translateY(0); }
 
-      color: var(--text);
+    50% { transform: translateY(-13px); }
 
-      background: var(--surface);
+}
 
-      border: 1px solid var(--border);
+.float { animation: float 4s ease-in-out infinite; }
 
-      transition: transform .2s ease, background .2s ease;
+@keyframes appear {
 
-    }
+    from { opacity:0; transform:translateY(20px); }
 
-    .soft-button:hover { transform: translateY(-2px); }
+    to { opacity:1; transform:translateY(0); }
 
-    .theme-button {
+}
 
-      color: var(--text);
+.appear { animation: appear .8s ease both; }
 
-      background: var(--surface);
+.timer {
 
-      border: 1px solid var(--border);
+    background: var(--card);
 
-    }
+    border: 1px solid var(--glow);
 
-    .sparkle {
+    border-radius: 18px;
 
-      position: absolute;
+    padding: 17px 10px;
 
-      user-select: none;
+    min-width: 65px;
 
-      pointer-events: none;
+}
 
-      line-height: 1;
+.line {
 
-    }
+    height: 1px;
 
-    .hero-number {
+    background: linear-gradient(90deg,transparent,var(--accent),transparent);
 
-      color: transparent;
+}
 
-      -webkit-text-stroke: 1.5px var(--pink-strong);
+.secret { display:none; }
 
-      text-shadow: 0 12px 45px rgba(217, 87, 145, .10);
+.secret.show { display:block; animation:appear .6s ease; }
 
-    }
+#confetti {
 
-    .count-cell {
+    position: fixed;
 
-      background: var(--surface-solid);
+    inset: 0;
 
-      border: 1px solid var(--border);
+    width: 100%;
 
-    }
+    height: 100%;
 
-    .detail-card {
+    pointer-events: none;
 
-      background: var(--surface);
+    z-index: 100;
 
-      border: 1px solid var(--border);
+}
 
-      transition: transform .2s ease, border-color .2s ease;
-
-    }
-
-    .detail-card:hover {
-
-      transform: translateY(-3px);
-
-      border-color: var(--pink-strong);
-
-    }
-
-    .form-field {
-
-      width: 100%;
-
-      border: 1px solid var(--border);
-
-      color: var(--text);
-
-      background: var(--surface-solid);
-
-      border-radius: 1rem;
-
-      padding: .85rem 1rem;
-
-      outline: none;
-
-    }
-
-    .form-field:focus {
-
-      border-color: var(--pink-strong);
-
-      box-shadow: 0 0 0 3px rgba(217, 87, 145, .12);
-
-    }
-
-    .form-field::placeholder {
-
-      color: var(--muted);
-
-      opacity: .8;
-
-    }
-
-    .form-field option { color: #43283c; }
-
-    .toast {
-
-      opacity: 0;
-
-      transform: translateY(8px);
-
-      pointer-events: none;
-
-      transition: opacity .2s ease, transform .2s ease;
-
-    }
-
-    .toast.show {
-
-      opacity: 1;
-
-      transform: translateY(0);
-
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-
-      *, *::before, *::after {
-
-        scroll-behavior: auto !important;
-
-        animation-duration: .01ms !important;
-
-        transition-duration: .01ms !important;
-
-      }
-
-    }
-
-  </style>
+</style>
 
 </head>
 
 <body>
 
-  <div class="site-shell relative overflow-hidden">
+<canvas id="confetti"></canvas>
 
-    <header class="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
+<!-- HEADER -->
 
-      <button
+<header class="flex justify-between items-center px-6 md:px-14 py-6">
 
-        type="button"
+    <div>
 
-        class="flex items-center gap-2 text-left"
+        <div class="heading font-black text-xl gradient">MYATA.</div>
 
-        onclick="showPage('home')"
+        <div class="text-xs tracking-widest" style="color:var(--muted)">
 
-        aria-label="На главную"
+            PRIVATE INVITATION
 
-      >
+        </div>
 
-        <span
+    </div>
 
-          class="grid h-10 w-10 place-items-center rounded-full text-lg"
+    <button id="theme" class="card px-5 py-3 text-sm">
 
-          style="background:var(--yellow)"
+        🌙
 
-        >✳</span>
+    </button>
 
-        <span class="text-xs font-bold tracking-[.18em]">
+</header>
 
-          BIRTHDAY <span class="accent-text">18</span>
+<!-- HERO -->
 
-        </span>
+<section class="relative min-h-[88vh] flex items-center justify-center text-center px-5 overflow-hidden">
 
-      </button>
+    <div class="orb" style="top:5%;left:-100px"></div>
 
-      <div class="flex items-center gap-2 sm:gap-3">
+    <div class="orb" style="bottom:0;right:-100px"></div>
 
-        <button
+    <div class="relative z-10 appear">
 
-          id="themeToggle"
+        <div class="inline-block border rounded-full px-5 py-3 mb-9 text-xs tracking-[4px]"
 
-          type="button"
+             style="border-color:var(--accent);color:var(--accent)">
 
-          class="theme-button inline-flex min-h-10 items-center gap-2 rounded-full px-3 py-2 text-sm font-medium"
+            ✦ AN EXCLUSIVE INVITATION ✦
 
-          aria-label="Переключить тему"
+        </div>
 
-          title="Переключить тему"
+        <p class="small-label mb-6">HEY, VIKA!</p>
 
-        >
+        <h1 class="text-5xl sm:text-7xl md:text-8xl font-black leading-tight">
 
-          <span id="themeIcon" aria-hidden="true">☾</span>
+            LET'S<br>
 
-          <span class="hidden sm:inline" id="themeLabel">Тёмная тема</span>
+            <span class="gradient neon">CELEBRATE.</span>
 
-        </button>
+        </h1>
 
-        <button
+        <p class="max-w-lg mx-auto mt-8 leading-8" style="color:var(--muted)">
 
-          type="button"
+            Один особенный вечер.<br>
 
-          class="soft-button rounded-full px-4 py-2.5 text-sm font-semibold"
+            Две подруги. И один повод встретиться,
 
-          onclick="showPage('details')"
+            который мы немного задержали.
 
-        >
+        </p>
 
-          Детали <span aria-hidden="true">↗</span>
+        <a href="#story" class="btn mt-10">
 
-        </button>
+            OPEN YOUR INVITATION ↗
 
-      </div>
+        </a>
 
-    </header>
+        <div class="mt-20 text-xs tracking-[5px]" style="color:var(--accent)">
 
-    <main class="relative z-10 mx-auto w-full max-w-6xl px-5 pb-10 sm:px-8 lg:px-10">
+            SCROLL DOWN ↓
 
-      <!-- СТРАНИЦА 1: ГЛАВНОЕ ПРИГЛАШЕНИЕ -->
+        </div>
 
-      <section id="home" class="page active" aria-labelledby="hero-title">
+    </div>
 
-        <div class="relative grid min-h-[76vh] items-center gap-10 py-8 md:grid-cols-[1.05fr_.95fr] md:py-12 lg:gap-16">
+</section>
 
-          <span class="sparkle left-1 top-10 text-3xl accent-text" aria-hidden="true">✳</span>
+<!-- STORY -->
 
-          <span class="sparkle right-4 top-8 text-2xl" style="color:#e5b832" aria-hidden="true">✦</span>
+<section id="story" class="py-24 px-5">
 
-          <div class="relative z-10 order-2 md:order-1">
+    <div class="max-w-3xl mx-auto text-center">
 
-            <div
+        <p class="small-label mb-6">A LITTLE STORY</p>
 
-              class="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[10px] font-bold uppercase eyebrow sm:text-xs"
+        <h2 class="text-3xl md:text-5xl font-black mb-12">
 
-              style="border-color:var(--border);background:var(--surface)"
+            ВИКА, ЭТО <span class="gradient">ДЛЯ ТЕБЯ.</span>
 
-            >
+        </h2>
 
-              <span class="h-2 w-2 rounded-full" style="background:var(--pink-strong)"></span>
+        <div class="card p-8 md:p-14">
 
-              Save the date · 23 октября
+            <div class="text-6xl float mb-8">🎂</div>
 
-            </div>
+            <p class="text-lg md:text-xl font-bold leading-9">
 
-            <p class="mb-3 text-sm font-medium muted sm:text-base">
-
-              У меня скоро особенный день…
+                У меня тут небольшое объявление...
 
             </p>
 
-            <h1 id="hero-title" class="serif max-w-xl text-5xl leading-[.98] sm:text-6xl lg:text-7xl">
+            <p class="mt-7 leading-9" style="color:var(--muted)">
 
-              Мне <span class="accent-text italic">18!</span><br>
+                Мой день рождения уже прошёл целый месяц назад.
 
-              <span class="font-normal">Пойдём</span><br>
+                Но я решила, что это совершенно не повод
 
-              праздновать?
+                оставлять его без красивого продолжения.
 
-            </h1>
+                <br><br>
 
-            <p class="mt-6 max-w-md text-base leading-7 muted sm:text-lg">
+                Поэтому я официально приглашаю тебя
 
-              Приглашаю тебя провести этот день вместе:
+                провести этот вечер со мной.
 
-              немного волшебства, много улыбок и воспоминания,
+                <br><br>
 
-              которые останутся с нами.
+                Нас ждёт <span class="gradient font-extrabold">Мята Lounge</span>,
+
+                приятная атмосфера, вкусные напитки,
+
+                разговоры обо всём на свете и время только для нас.
+
+                <br><br>
+
+                Потому что отмечать хочется именно с тобой. ❤️
 
             </p>
 
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+        </div>
 
-              <button
+    </div>
 
-                type="button"
+</section>
 
-                class="primary-button inline-flex min-h-12 items-center justify-center gap-3 rounded-full px-6 py-3 font-semibold"
+<!-- PLACE -->
 
-                onclick="showPage('details')"
+<section class="py-20 px-5">
 
-              >
+    <div class="max-w-5xl mx-auto">
 
-                Открыть приглашение <span aria-hidden="true">→</span>
+        <div class="text-center mb-12">
 
-              </button>
+            <p class="small-label mb-5">OUR DESTINATION</p>
 
-              <span class="text-sm muted">23 октября · мой 18-й день рождения</span>
+            <h2 class="text-3xl md:text-5xl font-black">
 
-            </div>
+                WHERE TO?
 
-            <div class="mt-10 flex items-center gap-3 text-sm muted">
+            </h2>
 
-              <span
+        </div>
 
-                class="grid h-9 w-9 place-items-center rounded-full text-lg"
+        <div class="card overflow-hidden">
 
-                style="background:var(--yellow)"
+            <div class="relative h-64 md:h-80 flex items-center justify-center text-center"
 
-              >♡</span>
+                 style="background:linear-gradient(135deg,#251033,#5b1c76,#180b28)">
 
-              <span>Будет ещё лучше, если ты будешь рядом</span>
+                <div class="orb" style="left:20%;top:0"></div>
 
-            </div>
+                <div class="relative z-10">
 
-          </div>
+                    <div class="text-5xl mb-5">✦</div>
 
-          <div class="relative order-1 mx-auto w-full max-w-md md:order-2">
+                    <h3 class="heading text-4xl md:text-6xl font-black text-white">
 
-            <div
+                        МЯТА
 
-              class="absolute -inset-5 rounded-[48%_48%_42%_42%] blur-2xl"
+                    </h3>
 
-              style="background:linear-gradient(145deg,var(--pink),var(--yellow));opacity:.45"
+                    <p class="heading text-xl md:text-2xl tracking-[10px] text-white mt-3">
 
-            ></div>
+                        LOUNGE
 
-            <div class="glass relative mx-auto flex aspect-[4/5] max-h-[570px] w-full flex-col items-center justify-center overflow-hidden rounded-[48%_48%_2rem_2rem] px-6 py-8 text-center sm:px-10">
+                    </p>
 
-              <div class="absolute left-7 top-10 rotate-[-12deg] text-4xl" style="color:#e5b832" aria-hidden="true">✦</div>
+                    <p class="text-xs tracking-[5px] mt-7 text-white/70">
 
-              <div class="absolute right-8 top-24 rotate-12 text-2xl accent-text" aria-hidden="true">✳</div>
+                        YOUR EVENING STARTS HERE
 
-              <div class="absolute bottom-16 left-8 rotate-12 text-3xl" style="color:#e5b832" aria-hidden="true">✧</div>
-
-              <div class="absolute bottom-24 right-8 -rotate-12 text-3xl accent-text" aria-hidden="true">♡</div>
-
-              <div class="relative">
-
-                <p class="eyebrow text-[10px] font-bold uppercase muted sm:text-xs">
-
-                  A little party, a lot of love
-
-                </p>
-
-                <div class="hero-number serif my-1 text-[9rem] font-bold leading-none sm:text-[11rem]">
-
-                  18
+                    </p>
 
                 </div>
 
-                <p class="serif -mt-1 text-3xl italic sm:text-4xl">and glowing</p>
+            </div>
 
-                <div class="mx-auto my-6 h-px w-20" style="background:var(--pink-strong)"></div>
+            <div class="p-7 md:p-10 grid sm:grid-cols-2 gap-8">
 
-                <p class="text-xs font-semibold uppercase eyebrow sm:text-sm">23 · 10 · 2026</p>
+                <div>
 
-                <p class="mt-3 text-sm muted">Новая глава начинается ✨</p>
+                    <p class="small-label mb-3">LOCATION</p>
 
-              </div>
+                    <p class="text-xl font-extrabold">Мята Lounge</p>
 
-              <span class="absolute bottom-5 text-[10px] uppercase eyebrow muted">
+                    <p class="text-sm mt-2" style="color:var(--muted)">
 
-                You are on the guest list
+                        Место нашего особенного вечера
 
-              </span>
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <p class="small-label mb-3">DRESS CODE</p>
+
+                    <p class="text-xl font-extrabold">YOUR BEST LOOK</p>
+
+                    <p class="text-sm mt-2" style="color:var(--muted)">
+
+                        Приходи в том, в чём чувствуешь себя прекрасно.
+
+                    </p>
+
+                </div>
 
             </div>
 
-            <span class="sparkle -right-1 top-1/3 text-4xl accent-text" aria-hidden="true">✧</span>
+        </div>
 
-          </div>
+    </div>
+
+</section>
+
+<!-- DATE -->
+
+<section class="py-24 px-5">
+
+    <div class="text-center mb-12">
+
+        <p class="small-label mb-5">SAVE THE DATE</p>
+
+        <h2 class="text-3xl md:text-5xl font-black">THE PLAN.</h2>
+
+    </div>
+
+    <div class="max-w-3xl mx-auto grid grid-cols-2 gap-4">
+
+        <div class="card p-7 text-center">
+
+            <div class="text-4xl mb-5">📅</div>
+
+            <p class="small-label mb-4">DATE</p>
+
+            <p class="heading text-xl md:text-2xl font-bold">21.11</p>
+
+            <p class="text-sm mt-2" style="color:var(--muted)">Суббота</p>
 
         </div>
 
-        <!-- ТАЙМЕР ОБРАТНОГО ОТСЧЁТА -->
+        <div class="card p-7 text-center">
 
-        <section class="glass mx-auto mb-8 max-w-3xl rounded-[2rem] p-5 sm:p-8" aria-labelledby="countdown-title">
+            <div class="text-4xl mb-5">🕔</div>
 
-          <div class="flex flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
+            <p class="small-label mb-4">TIME</p>
+
+            <p class="heading text-xl md:text-2xl font-bold">17:00</p>
+
+            <p class="text-sm mt-2" style="color:var(--muted)">Время встречи</p>
+
+        </div>
+
+    </div>
+
+    <div class="max-w-3xl mx-auto card mt-4 p-6 text-center">
+
+        <p class="small-label mb-3">THE GUEST LIST</p>
+
+        <p class="heading text-lg font-bold gradient">YOU + ME = PERFECT NIGHT</p>
+
+        <p class="text-sm mt-3" style="color:var(--muted)">
+
+            Всего два человека. И это именно то, что нужно.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- COUNTDOWN -->
+
+<section class="py-24 px-5 text-center">
+
+    <p class="small-label mb-5">TIME IS TICKING</p>
+
+    <h2 class="text-3xl md:text-5xl font-black mb-12">
+
+        COUNTDOWN.
+
+    </h2>
+
+    <div class="flex justify-center gap-2 sm:gap-5" id="timer">
+
+        <div class="timer">
+
+            <div id="days" class="heading text-2xl sm:text-4xl gradient">00</div>
+
+            <p class="text-xs mt-3" style="color:var(--muted)">ДНЕЙ</p>
+
+        </div>
+
+        <div class="timer">
+
+            <div id="hours" class="heading text-2xl sm:text-4xl gradient">00</div>
+
+            <p class="text-xs mt-3" style="color:var(--muted)">ЧАСОВ</p>
+
+        </div>
+
+        <div class="timer">
+
+            <div id="minutes" class="heading text-2xl sm:text-4xl gradient">00</div>
+
+            <p class="text-xs mt-3" style="color:var(--muted)">МИНУТ</p>
+
+        </div>
+
+        <div class="timer">
+
+            <div id="seconds" class="heading text-2xl sm:text-4xl gradient">00</div>
+
+            <p class="text-xs mt-3" style="color:var(--muted)">СЕКУНД</p>
+
+        </div>
+
+    </div>
+
+    <p id="timerText" class="gradient font-bold mt-8">
+
+        Скоро увидимся!
+
+    </p>
+
+</section>
+
+<!-- EVENING PROGRAM -->
+
+<section class="py-24 px-5">
+
+    <div class="text-center mb-14">
+
+        <p class="small-label mb-5">THE EXPERIENCE</p>
+
+        <h2 class="text-3xl md:text-5xl font-black">
+
+            OUR EVENING.
+
+        </h2>
+
+        <p class="mt-5" style="color:var(--muted)">
+
+            Небольшой план большого вечера
+
+        </p>
+
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-5">
+
+        <div class="card p-7 flex gap-6 items-center">
+
+            <div class="text-4xl">✨</div>
 
             <div>
 
-              <p class="eyebrow text-[10px] font-bold uppercase muted sm:text-xs">
+                <p class="small-label mb-2">01 / ARRIVAL</p>
 
-                The countdown is on
+                <h3 class="font-extrabold text-lg">Встречаемся</h3>
 
-              </p>
+                <p class="text-sm mt-2" style="color:var(--muted)">
 
-              <h2 id="countdown-title" class="serif mt-1 text-2xl sm:text-3xl">
-
-                До праздника осталось
-
-              </h2>
-
-            </div>
-
-            <div
-
-              class="grid w-full grid-cols-4 gap-2 sm:w-auto sm:gap-3"
-
-              aria-live="polite"
-
-              aria-label="Обратный отсчёт до 23 октября"
-
-            >
-
-              <div class="count-cell min-w-0 rounded-2xl px-2 py-3 sm:min-w-[4.5rem] sm:px-3">
-
-                <div id="days" class="serif text-2xl font-bold sm:text-3xl">00</div>
-
-                <div class="mt-1 text-[9px] uppercase eyebrow muted sm:text-[10px]">дней</div>
-
-              </div>
-
-              <div class="count-cell min-w-0 rounded-2xl px-2 py-3 sm:min-w-[4.5rem] sm:px-3">
-
-                <div id="hours" class="serif text-2xl font-bold sm:text-3xl">00</div>
-
-                <div class="mt-1 text-[9px] uppercase eyebrow muted sm:text-[10px]">часов</div>
-
-              </div>
-
-              <div class="count-cell min-w-0 rounded-2xl px-2 py-3 sm:min-w-[4.5rem] sm:px-3">
-
-                <div id="minutes" class="serif text-2xl font-bold sm:text-3xl">00</div>
-
-                <div class="mt-1 text-[9px] uppercase eyebrow muted sm:text-[10px]">минут</div>
-
-              </div>
-
-              <div class="count-cell min-w-0 rounded-2xl px-2 py-3 sm:min-w-[4.5rem] sm:px-3">
-
-                <div id="seconds" class="serif text-2xl font-bold sm:text-3xl">00</div>
-
-                <div class="mt-1 text-[9px] uppercase eyebrow muted sm:text-[10px]">секунд</div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-      </section>
-
-      <!-- СТРАНИЦА 2: ДЕТАЛИ И ФОРМА RSVP -->
-
-      <section id="details" class="page py-6 sm:py-10" aria-labelledby="details-title">
-
-        <div class="mx-auto max-w-4xl">
-
-          <button
-
-            type="button"
-
-            class="soft-button mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
-
-            onclick="showPage('home')"
-
-          >
-
-            <span aria-hidden="true">←</span> Назад к приглашению
-
-          </button>
-
-          <div class="text-center">
-
-            <p class="eyebrow text-[10px] font-bold uppercase muted sm:text-xs">
-
-              The little details
-
-            </p>
-
-            <h1 id="details-title" class="serif mt-3 text-4xl sm:text-6xl">
-
-              Давай сделаем этот<br>
-
-              <span class="accent-text italic">день особенным</span>
-
-            </h1>
-
-            <p class="mx-auto mt-5 max-w-xl leading-7 muted">
-
-              Сохраняй дату, выбирай любимый праздничный образ
-
-              и приходи за хорошим настроением.
-
-            </p>
-
-          </div>
-
-          <div class="mt-10 grid gap-4 sm:grid-cols-2">
-
-            <article class="detail-card rounded-[1.75rem] p-6 sm:p-7">
-
-              <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl text-2xl" style="background:var(--pink)">♡</div>
-
-              <p class="eyebrow text-[10px] font-bold uppercase muted">Когда</p>
-
-              <h2 class="serif mt-2 text-2xl">Пятница, 23 октября</h2>
-
-              <p class="mt-2 text-sm leading-6 muted">
-
-                Время начала: <strong style="color:var(--text)">[добавь время]</strong>
-
-              </p>
-
-            </article>
-
-            <article class="detail-card rounded-[1.75rem] p-6 sm:p-7">
-
-              <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl text-2xl" style="background:var(--yellow)">⌖</div>
-
-              <p class="eyebrow text-[10px] font-bold uppercase muted">Где</p>
-
-              <h2 class="serif mt-2 text-2xl">Место встречи</h2>
-
-              <p class="mt-2 text-sm leading-6 muted">[добавь адрес или название места]</p>
-
-            </article>
-
-            <article class="detail-card rounded-[1.75rem] p-6 sm:p-7">
-
-              <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl text-2xl" style="background:var(--yellow)">✦</div>
-
-              <p class="eyebrow text-[10px] font-bold uppercase muted">Дресс-код</p>
-
-              <h2 class="serif mt-2 text-2xl">Pastel &amp; sparkle</h2>
-
-              <p class="mt-2 text-sm leading-6 muted">
-
-                Розовый, молочный, нежно-жёлтый — или просто то,
-
-                в чём ты чувствуешь себя классно.
-
-              </p>
-
-            </article>
-
-            <article class="detail-card rounded-[1.75rem] p-6 sm:p-7">
-
-              <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl text-2xl" style="background:var(--pink)">☼</div>
-
-              <p class="eyebrow text-[10px] font-bold uppercase muted">Что взять с собой</p>
-
-              <h2 class="serif mt-2 text-2xl">Своё настроение</h2>
-
-              <p class="mt-2 text-sm leading-6 muted">
-
-                Остальное — обнимашки, музыка, вкусности и праздничное
-
-                настроение — организуем на месте.🩷
-
-              </p>
-
-            </article>
-
-          </div>
-
-          <!-- ФОРМА ПОДТВЕРЖДЕНИЯ ПРИСУТСТВИЯ -->
-
-          <div class="glass relative mt-8 overflow-hidden rounded-[2rem] p-6 sm:p-10">
-
-            <span class="sparkle right-7 top-5 text-3xl" style="color:#e5b832" aria-hidden="true">✧</span>
-
-            <div class="max-w-2xl">
-
-              <p class="eyebrow text-[10px] font-bold uppercase muted sm:text-xs">
-
-                Let me know
-
-              </p>
-
-              <h2 class="serif mt-2 text-3xl sm:text-4xl">Ты будешь?</h2>
-
-              <p class="mt-3 text-sm leading-6 muted">
-
-                Отметь ниже, получится ли прийти, чтобы я знала,
-
-                сколько готовить вкусностей 💗
-
-              </p>
-
-            </div>
-
-            <form id="rsvpForm" class="mt-6 grid gap-4 sm:grid-cols-2">
-
-              <label class="block text-sm font-semibold">
-
-                Как тебя зовут?
-
-                <input
-
-                  class="form-field mt-2"
-
-                  name="guestName"
-
-                  autocomplete="name"
-
-                  placeholder="Твоё имя"
-
-                  required
-
-                  maxlength="70"
-
-                >
-
-              </label>
-
-              <label class="block text-sm font-semibold">
-
-                Получится прийти?
-
-                <select class="form-field mt-2" name="attendance" required>
-
-                  <option value="" disabled selected>Выбери ответ</option>
-
-                  <option value="yes">Да, буду! 🎉</option>
-
-                  <option value="maybe">Пока не уверена / уверен</option>
-
-                  <option value="no">К сожалению, не смогу</option>
-
-                </select>
-
-              </label>
-
-              <label class="block text-sm font-semibold sm:col-span-2">
-
-                Сообщение имениннице
-
-                <span class="font-normal muted">(необязательно)</span>
-
-                <textarea
-
-                  class="form-field mt-2 resize-y"
-
-                  name="message"
-
-                  rows="3"
-
-                  maxlength="400"
-
-                  placeholder="Поздравление, пожелание или что-нибудь важное…"
-
-                ></textarea>
-
-              </label>
-
-              <div class="sm:col-span-2">
-
-                <button
-
-                  class="primary-button inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold sm:w-auto"
-
-                  type="submit"
-
-                >
-
-                  Отправить ответ <span aria-hidden="true">♡</span>
-
-                </button>
-
-                <p class="mt-3 text-xs leading-5 muted">
-
-                  Демо-форма: ответ пока показывается только на этой странице
-
-                  и не отправляется имениннице.
+                    Красиво начинаем наш вечер.
 
                 </p>
 
-              </div>
-
-            </form>
-
-            <div
-
-              id="rsvpToast"
-
-              class="toast mt-5 rounded-2xl border p-4 text-sm"
-
-              style="border-color:var(--border);background:var(--surface-solid)"
-
-              role="status"
-
-              aria-live="polite"
-
-            ></div>
-
-          </div>
-
-          <footer class="py-10 text-center">
-
-            <p class="serif text-2xl italic">
-
-              Очень жду встречи! <span class="accent-text">♡</span>
-
-            </p>
-
-            <p class="mt-2 text-xs muted">23 октября 2026 · сделано с любовью</p>
-
-            <button
-
-              type="button"
-
-              class="mt-5 text-sm font-semibold accent-text underline decoration-dotted underline-offset-4"
-
-              onclick="showPage('home')"
-
-            >
-
-              Вернуться в начало ↑
-
-            </button>
-
-          </footer>
+            </div>
 
         </div>
 
-      </section>
+        <div class="card p-7 flex gap-6 items-center">
 
-    </main>
+            <div class="text-4xl">🍓</div>
 
-  </div>
+            <div>
 
-  <script>
+                <p class="small-label mb-2">02 / ENJOY</p>
 
-    // Переключение между двумя страницами внутри одного HTML-файла.
+                <h3 class="font-extrabold text-lg">Вкусности и атмосфера</h3>
 
-    function showPage(pageName) {
+                <p class="text-sm mt-2" style="color:var(--muted)">
 
-      document.querySelectorAll('.page').forEach((page) => {
+                    Выбираем что-нибудь вкусное и наслаждаемся вечером.
 
-        const isActive = page.id === pageName;
+                </p>
 
-        page.classList.toggle('active', isActive);
+            </div>
 
-        page.setAttribute('aria-hidden', String(!isActive));
+        </div>
 
-      });
+        <div class="card p-7 flex gap-6 items-center">
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+            <div class="text-4xl">📸</div>
+
+            <div>
+
+                <p class="small-label mb-2">03 / MEMORIES</p>
+
+                <h3 class="font-extrabold text-lg">Фото на память</h3>
+
+                <p class="text-sm mt-2" style="color:var(--muted)">
+
+                    Обязательно сохраняем этот вечер в фотографиях.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card p-7 flex gap-6 items-center">
+
+            <div class="text-4xl">💜</div>
+
+            <div>
+
+                <p class="small-label mb-2">04 / JUST US</p>
+
+                <h3 class="font-extrabold text-lg">Время вдвоём</h3>
+
+                <p class="text-sm mt-2" style="color:var(--muted)">
+
+                    Никуда не торопимся и просто отдыхаем.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SECRET -->
+
+<section class="py-24 px-5 text-center">
+
+    <div class="max-w-2xl mx-auto card p-9 md:p-14">
+
+        <div class="text-5xl mb-7 float">🎁</div>
+
+        <p class="small-label mb-5">TOP SECRET</p>
+
+        <h2 class="text-2xl md:text-3xl font-black mb-6">
+
+            ЕЩЁ ОДИН МОМЕНТ...
+
+        </h2>
+
+        <p class="leading-8 mb-8" style="color:var(--muted)">
+
+            В этом приглашении есть кое-что,
+
+            что я хочу тебе сказать.
+
+        </p>
+
+        <button class="btn" id="secretBtn">
+
+            ОТКРЫТЬ ПОСЛАНИЕ
+
+        </button>
+
+        <div class="secret mt-9" id="secret">
+
+            <div class="line mb-8"></div>
+
+            <p class="text-xl md:text-2xl font-bold gradient leading-relaxed">
+
+                Спасибо, что ты есть в моей жизни.
+
+                Я очень хочу провести этот вечер именно с тобой. ❤️
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FINAL -->
+
+<section class="relative py-32 px-5 text-center overflow-hidden">
+
+    <div class="orb" style="left:35%;top:10%"></div>
+
+    <div class="relative z-10">
+
+        <p class="small-label mb-8">THE MOST IMPORTANT QUESTION</p>
+
+        <h2 class="text-4xl sm:text-6xl md:text-7xl font-black leading-tight">
+
+            ВИКА,<br>
+
+            <span class="gradient neon">ГОТОВА?</span>
+
+        </h2>
+
+        <p class="mt-8 mb-10" style="color:var(--muted)">
+
+            Жду только одного ответа...
+
+        </p>
+
+        <button id="yes" class="btn text-lg px-12 py-5">
+
+            ДА, Я ИДУ! ❤️
+
+        </button>
+
+        <div id="result" class="hidden max-w-lg mx-auto mt-12 card p-9">
+
+            <div class="text-6xl mb-6">🥂</div>
+
+            <h3 class="text-2xl font-black gradient mb-5">
+
+                ЭТО ДААА!
+
+            </h3>
+
+            <p class="leading-8" style="color:var(--muted)">
+
+                Вика, тогда всё решено!
+
+                <br><br>
+
+                21 ноября, 17:00.<br>
+
+                Мята Lounge.
+
+                <br><br>
+
+                День рождения с опозданием,
+
+                зато с правильным человеком!
+
+                <br><br>
+
+                <span class="gradient font-extrabold">
+
+                    ДО ВСТРЕЧИ! 💜
+
+                </span>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="text-center px-5 py-12">
+
+    <div class="line max-w-2xl mx-auto mb-9"></div>
+
+    <h2 class="text-2xl font-black gradient mb-4">
+
+        MYATA LOUNGE
+
+    </h2>
+
+    <p class="text-xs tracking-[4px]" style="color:var(--muted)">
+
+        MADE FOR VIKA WITH LOVE
+
+    </p>
+
+    <p class="text-xs mt-6" style="color:var(--muted)">
+
+        21.11.2026 · 17:00
+
+    </p>
+
+</footer>
+
+<script>
+
+// THEME
+
+document.getElementById('theme').onclick = function() {
+
+    document.body.classList.toggle('light');
+
+    this.textContent =
+
+        document.body.classList.contains('light') ? '🌙' : '☀️';
+
+};
+
+// COUNTDOWN
+
+const eventDate = new Date('2026-11-21T17:00:00+03:00').getTime();
+
+function updateTimer() {
+
+    const now = Date.now();
+
+    const diff = eventDate - now;
+
+    if (diff <= 0) {
+
+        ['days','hours','minutes','seconds'].forEach(id => {
+
+            document.getElementById(id).textContent = '00';
+
+        });
+
+        document.getElementById('timerText').textContent =
+
+            '🎉 ВРЕМЯ НАШЕЙ ВСТРЕЧИ!';
+
+        return;
 
     }
 
-    // Переключение темы через CSS-переменные.
+    const d = Math.floor(diff / 86400000);
 
-    // Выбор сохраняется в браузере.
+    const h = Math.floor(diff / 3600000) % 24;
 
-    const themeToggle = document.getElementById('themeToggle');
+    const m = Math.floor(diff / 60000) % 60;
 
-    const themeIcon = document.getElementById('themeIcon');
+    const s = Math.floor(diff / 1000) % 60;
 
-    const themeLabel = document.getElementById('themeLabel');
+    document.getElementById('days').textContent = d;
 
-    const savedTheme = localStorage.getItem('birthday-theme');
+    document.getElementById('hours').textContent = String(h).padStart(2,'0');
 
-    const preferredTheme =
+    document.getElementById('minutes').textContent = String(m).padStart(2,'0');
 
-      window.matchMedia('(prefers-color-scheme: dark)').matches
+    document.getElementById('seconds').textContent = String(s).padStart(2,'0');
 
-        ? 'dark'
+}
 
-        : 'light';
+updateTimer();
 
-    function applyTheme(theme) {
+setInterval(updateTimer, 1000);
 
-      document.documentElement.dataset.theme = theme;
+// SECRET MESSAGE
 
-      const isDark = theme === 'dark';
+document.getElementById('secretBtn').onclick = function() {
 
-      themeIcon.textContent = isDark ? '☀' : '☾';
+    const secret = document.getElementById('secret');
 
-      themeLabel.textContent = isDark ? 'Светлая тема' : 'Тёмная тема';
+    secret.classList.toggle('show');
 
-      themeToggle.setAttribute(
+    this.textContent = secret.classList.contains('show')
 
-        'aria-label',
+        ? 'СКРЫТЬ ПОСЛАНИЕ'
 
-        isDark ? 'Включить светлую тему' : 'Включить тёмную тему'
+        : 'ОТКРЫТЬ ПОСЛАНИЕ';
 
-      );
+};
 
-      document.querySelector('meta[name="theme-color"]').setAttribute(
+// CONFETTI
 
-        'content',
+function celebrate() {
 
-        isDark ? '#211a27' : '#fff7fb'
+    const canvas = document.getElementById('confetti');
 
-      );
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+
+    const colors = ['#d946ef','#a855f7','#ff5c9a','#ffffff','#ffcc66'];
+
+    for (let i = 0; i < 140; i++) {
+
+        particles.push({
+
+            x: Math.random() * canvas.width,
+
+            y: -Math.random() * canvas.height,
+
+            size: Math.random() * 8 + 3,
+
+            speed: Math.random() * 4 + 2,
+
+            color: colors[Math.floor(Math.random()*colors.length)],
+
+            rotation: Math.random() * 360
+
+        });
 
     }
 
-    applyTheme(savedTheme || preferredTheme);
+    let frame = 0;
 
-    themeToggle.addEventListener('click', () => {
+    function draw() {
 
-      const nextTheme =
+        ctx.clearRect(0,0,canvas.width,canvas.height);
 
-        document.documentElement.dataset.theme === 'dark'
+        particles.forEach(p => {
 
-          ? 'light'
+            ctx.save();
 
-          : 'dark';
+            ctx.translate(p.x,p.y);
 
-      applyTheme(nextTheme);
+            ctx.rotate(p.rotation * Math.PI / 180);
 
-      localStorage.setItem('birthday-theme', nextTheme);
+            ctx.fillStyle = p.color;
+
+            ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
+
+            ctx.restore();
+
+            p.y += p.speed;
+
+            p.x += Math.sin(p.y/30);
+
+            p.rotation += 3;
+
+        });
+
+        frame++;
+
+        if (frame < 180) {
+
+            requestAnimationFrame(draw);
+
+        } else {
+
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        }
+
+    }
+
+    draw();
+
+}
+
+// FINAL ANSWER
+
+document.getElementById('yes').onclick = function() {
+
+    document.getElementById('result').classList.remove('hidden');
+
+    document.getElementById('result').scrollIntoView({
+
+        behavior:'smooth',
+
+        block:'center'
 
     });
 
-    // Считаем до ближайшего 23 октября по локальному времени устройства.
+    celebrate();
 
-    const nowAtLoad = new Date();
+    this.textContent = 'ОТВЕТ ПРИНЯТ ❤️';
 
-    let birthdayTarget = new Date(
+};
 
-      nowAtLoad.getFullYear(), 9, 23, 0, 0, 0
-
-    );
-
-    if (nowAtLoad > birthdayTarget) {
-
-      birthdayTarget = new Date(
-
-        nowAtLoad.getFullYear() + 1, 9, 23, 0, 0, 0
-
-      );
-
-    }
-
-    const pad = (number) => String(number).padStart(2, '0');
-
-    function updateCountdown() {
-
-      const now = new Date();
-
-      const difference = Math.max(
-
-        0,
-
-        birthdayTarget.getTime() - now.getTime()
-
-      );
-
-      const days = Math.floor(difference / 86400000);
-
-      const hours = Math.floor((difference % 86400000) / 3600000);
-
-      const minutes = Math.floor((difference % 3600000) / 60000);
-
-      const seconds = Math.floor((difference % 60000) / 1000);
-
-      document.getElementById('days').textContent = pad(days);
-
-      document.getElementById('hours').textContent = pad(hours);
-
-      document.getElementById('minutes').textContent = pad(minutes);
-
-      document.getElementById('seconds').textContent = pad(seconds);
-
-      if (difference === 0) {
-
-        document.getElementById('countdown-title').textContent =
-
-          'Сегодня мой день рождения!';
-
-      }
-
-    }
-
-    updateCountdown();
-
-    window.setInterval(updateCountdown, 1000);
-
-    // Демоформа: проверяем данные и показываем локальное подтверждение.
-
-    const rsvpForm = document.getElementById('rsvpForm');
-
-    const rsvpToast = document.getElementById('rsvpToast');
-
-    rsvpForm.addEventListener('submit', (event) => {
-
-      event.preventDefault();
-
-      if (!rsvpForm.reportValidity()) return;
-
-      const formData = new FormData(rsvpForm);
-
-      const guestName = String(formData.get('guestName')).trim();
-
-      const attendance = formData.get('attendance');
-
-      const responses = {
-
-        yes: 'Ура, будем ждать тебя! 🎉',
-
-        maybe: 'Спасибо, что предупредила! Надеюсь, получится 💗',
-
-        no: 'Спасибо, что ответила. Буду рада увидеться в другой раз 💛'
-
-      };
-
-      rsvpToast.textContent =
-
-        `${guestName}, ${responses[attendance]} ` +
-
-        'Это демонстрация — ответ не отправлен имениннице.';
-
-      rsvpToast.classList.add('show');
-
-    });
-
-  </script>
+</script>
 
 </body>
 
